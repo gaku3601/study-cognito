@@ -1,6 +1,6 @@
 <template>
   <div class="confirm">
-    <h2>確認コードの再送信</h2>
+    <h2>パスワードを忘れたフロー</h2>
     <form @submit.prevent="confirm">
       <div>
         メール:
@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     confirm () {
-      this.$cognito.sendKey(this.username)
+      this.$cognito.forgotPassword(this.username)
         .then(result => {
           this.$router.replace('/passwordreset')
         })

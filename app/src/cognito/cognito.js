@@ -129,7 +129,7 @@ export default class Cognito {
   }
 
   /**
-   * RESET_REQUIRED
+   * パスワードリセット処理
    */
   confirmPassword (username, password, confirmationCode) {
     const userData = { Username: username, Pool: this.userPool }
@@ -144,6 +144,7 @@ export default class Cognito {
         },
         onSuccess () {
           console.log('Success')
+          resolve()
         }
       })
     })
@@ -161,6 +162,25 @@ export default class Cognito {
           console.log(err)
         } else {
           console.log('Success')
+        }
+      })
+    })
+  }
+
+  /*
+   * パスワードを忘れた場合の処理(確認コードの送信)
+   */
+  forgotPassword (username) {
+    const userData = { Username: username, Pool: this.userPool }
+    const cognitoUser = new CognitoUser(userData)
+    return new Promise((resolve, reject) => {
+      cognitoUser.forgotPassword({
+        onSuccess: function (result) {
+          console.log('call result: ' + result)
+          resolve(result)
+        },
+        onFailure: function (err) {
+          console.log(err)
         }
       })
     })
