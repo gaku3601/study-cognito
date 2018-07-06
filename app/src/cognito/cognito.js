@@ -97,6 +97,38 @@ export default class Cognito {
   }
 
   /**
+   * FORCE_CHANGE_PASSWORD
+   */
+  forceChangePassword (username, password, newpassword) {
+    const userData = { Username: username, Pool: this.userPool }
+    const cognitoUser = new CognitoUser(userData)
+    const authenticationData = { Username: username, Password: password }
+    const authenticationDetails = new AuthenticationDetails(authenticationData)
+    console.log(authenticationDetails)
+    return new Promise((resolve, reject) => {
+      cognitoUser.authenticateUser(authenticationDetails, {
+        onSuccess: (result) => {
+          // 実際にはクレデンシャルなどをここで取得する(今回は省略)
+          resolve(result)
+        },
+        onFailure: (err) => {
+          reject(err)
+        },
+        newPasswordRequired: function (userAttributes, requiredAttributes) {
+          cognitoUser.completeNewPasswordChallenge(newpassword, null, {
+            onFailure: function (err) {
+              reject(err)
+            },
+            onSuccess: function (result) {
+              resolve(result)
+            }
+          })
+        }
+      })
+    })
+  }
+
+  /**
    * ログアウト
    */
   logout () {

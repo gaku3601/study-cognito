@@ -5,6 +5,7 @@ import cognito from '@/cognito'
 import Login from '@/components/Login'
 import Signup from '@/components/Signup'
 import Confirm from '@/components/Confirm'
+import ForceChangePassword from '@/components/ForceChangePassword'
 
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ export default new Router({
       path: '/confirm',
       name: 'Confirm',
       component: Confirm
+    },
+    {
+      path: '/changepassword',
+      name: 'ChangePassword',
+      component: ForceChangePassword
     },
     { path: '/logout',
       beforeEnter: logout

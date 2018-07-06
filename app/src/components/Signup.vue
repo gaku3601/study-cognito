@@ -18,6 +18,7 @@
     </form>
     <router-link to="/login">ログイン</router-link>
     <router-link to="/confirm">確認コード入力</router-link>
+    <router-link to="/changepassword">強制パスワードの変更</router-link>
   </div>
 </template>
 
