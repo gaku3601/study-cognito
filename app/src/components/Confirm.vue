@@ -15,6 +15,7 @@
     <router-link to="/login">ログイン</router-link>
     <router-link to="/singup">ユーザー登録</router-link>
     <router-link to="/changepassword">強制パスワードの変更</router-link>
+    <router-link to="/passwordreset">リセット時処理</router-link>
   </div>
 </template>
 

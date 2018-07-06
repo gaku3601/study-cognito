@@ -129,6 +129,27 @@ export default class Cognito {
   }
 
   /**
+   * RESET_REQUIRED
+   */
+  confirmPassword (username, password, confirmationCode) {
+    const userData = { Username: username, Pool: this.userPool }
+    const cognitoUser = new CognitoUser(userData)
+    const authenticationData = { Username: username, Password: password }
+    const authenticationDetails = new AuthenticationDetails(authenticationData)
+    console.log(authenticationDetails)
+    return new Promise((resolve, reject) => {
+      cognitoUser.confirmPassword(confirmationCode, password, {
+        onFailure (err) {
+          console.log(err)
+        },
+        onSuccess () {
+          console.log('Success')
+        }
+      })
+    })
+  }
+
+  /**
    * ログアウト
    */
   logout () {

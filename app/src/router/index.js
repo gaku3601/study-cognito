@@ -6,6 +6,7 @@ import Login from '@/components/Login'
 import Signup from '@/components/Signup'
 import Confirm from '@/components/Confirm'
 import ForceChangePassword from '@/components/ForceChangePassword'
+import PasswordReset from '@/components/PasswordReset'
 
 Vue.use(Router)
 
@@ -58,6 +59,11 @@ export default new Router({
       path: '/changepassword',
       name: 'ChangePassword',
       component: ForceChangePassword
+    },
+    {
+      path: '/passwordreset',
+      name: 'PasswordReset',
+      component: PasswordReset
     },
     { path: '/logout',
       beforeEnter: logout
