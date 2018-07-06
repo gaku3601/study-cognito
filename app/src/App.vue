@@ -2,12 +2,17 @@
   <div id="app">
     <img src="./assets/logo.png">
     <router-view/>
+    <Link />
   </div>
 </template>
 
 <script>
+import Link from '@/components/Link'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    'Link': Link
+  }
 }
 </script>
 
