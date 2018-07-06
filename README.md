@@ -1,3 +1,7 @@
+# 参考文献
+https://docs.aws.amazon.com/ja_jp/cognito/latest/developerguide/using-amazon-cognito-user-identity-pools-javascript-examples.html  
+https://qiita.com/daikiojm/items/b02c19cfea6766c308ca  
+
 # セットアップ
 ## ライブラリの組み込み
 
