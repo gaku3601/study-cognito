@@ -1,18 +1,10 @@
 <template>
-  <div class="forcechange">
-    <h2>パスワードの変更</h2>
+  <div class="confirm">
+    <h2>パスワードを忘れたフロー</h2>
     <form @submit.prevent="confirm">
       <div>
-        email:
-        <input type="text" placeholder="メール" v-model="email" required>
-      </div>
-      <div>
-        パスワード:
-        <input type="password" placeholder="パスワード" v-model="password" required>
-      </div>
-      <div>
-        新パスワード:
-        <input type="password" placeholder="新しいパスワード" v-model="newpassword" required>
+        メール:
+        <input type="text" placeholder="メール" v-model="username" required>
       </div>
       <button>確認</button>
     </form>
@@ -29,16 +21,14 @@ export default {
   name: 'Confirm',
   data () {
     return {
-      email: '',
-      password: '',
-      newpassword: ''
+      username: ''
     }
   },
   methods: {
     confirm () {
-      this.$cognito.forceChangePassword(this.email, this.password, this.newpassword)
+      this.$cognito.sendKey(this.username)
         .then(result => {
-          this.$router.replace('/home')
+          this.$router.replace('/passwordreset')
         })
         .then(err => {
           this.error = err

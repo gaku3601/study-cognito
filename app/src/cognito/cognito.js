@@ -149,6 +149,23 @@ export default class Cognito {
     })
   }
 
+  /*
+   * 認証コードの再送信
+   */
+  sendKey (username) {
+    const userData = { Username: username, Pool: this.userPool }
+    const cognitoUser = new CognitoUser(userData)
+    return new Promise((resolve, reject) => {
+      cognitoUser.resendConfirmationCode(function (err, result) {
+        if (err) {
+          console.log(err)
+        } else {
+          console.log('Success')
+        }
+      })
+    })
+  }
+
   /**
    * ログアウト
    */

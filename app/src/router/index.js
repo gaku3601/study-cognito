@@ -7,6 +7,7 @@ import Signup from '@/components/Signup'
 import Confirm from '@/components/Confirm'
 import ForceChangePassword from '@/components/ForceChangePassword'
 import PasswordReset from '@/components/PasswordReset'
+import SendKey from '@/components/SendKey'
 
 Vue.use(Router)
 
@@ -64,6 +65,11 @@ export default new Router({
       path: '/passwordreset',
       name: 'PasswordReset',
       component: PasswordReset
+    },
+    {
+      path: '/sendkey',
+      name: 'SendKey',
+      component: SendKey
     },
     { path: '/logout',
       beforeEnter: logout
