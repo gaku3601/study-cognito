@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <div>
+    <a href="https://docs.aws.amazon.com/ja_jp/cognito/latest/developerguide/using-amazon-cognito-user-identity-pools-javascript-examples.html">ここらへん参照する</a>
+    <a href="https://qiita.com/daikiojm/items/b02c19cfea6766c308ca">ここらへん参照する</a>
+    </div>
     <img src="./assets/logo.png">
     <router-view/>
     <Link />

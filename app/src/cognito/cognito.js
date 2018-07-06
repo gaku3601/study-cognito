@@ -107,13 +107,6 @@ export default class Cognito {
     console.log(authenticationDetails)
     return new Promise((resolve, reject) => {
       cognitoUser.authenticateUser(authenticationDetails, {
-        onSuccess: (result) => {
-          // 実際にはクレデンシャルなどをここで取得する(今回は省略)
-          resolve(result)
-        },
-        onFailure: (err) => {
-          reject(err)
-        },
         newPasswordRequired: function (userAttributes, requiredAttributes) {
           cognitoUser.completeNewPasswordChallenge(newpassword, null, {
             onFailure: function (err) {
@@ -161,7 +154,7 @@ export default class Cognito {
         if (err) {
           console.log(err)
         } else {
-          console.log('Success')
+          resolve(result)
         }
       })
     })
